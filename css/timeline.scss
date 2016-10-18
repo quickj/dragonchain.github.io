@@ -76,11 +76,11 @@
     width: 100px;
     height: 100px;
     margin-left: 0;
-    border: 7px solid #f1f1f1;
-    border-radius: 100%;
     text-align: center;
-    color: #fff;
-    background-color: #f1f1f1;
+}
+
+.img-logo{
+    width: 425px;
 }
 
 .timeline>li .timeline-image h4 {
@@ -163,6 +163,10 @@
         height: 150px;
     }
 
+    .img-logo {
+        width: 630px;
+    }
+
     .timeline>li .timeline-image h4 {
         margin-top: 16px;
         font-size: 13px;
@@ -200,6 +204,10 @@
     .img-me {
         width: 200px;
         height: 200px;
+    }
+
+    .img-logo {
+        width: 780px;
     }
 
     .timeline>li .timeline-image h4 {
