@@ -39,9 +39,9 @@ favicon: "/img/favicon.ico"
 # Header layout #
 ################
 
-black-favicon: "/img/dragon/beta.png"
+black-favicon: "/img/beta.png"
 
-background-img: "../img/orion.png"
+background-img: "/img/orion.png"
 
 ##############################
 # Dynamic Text on the Header #
