@@ -24,35 +24,37 @@ A small team at Disney developed the blockchain platform internally in 2016.
 
 ### Team
 
-Joe Roets - Principal Architect / Vision
+[Joe Roets - Principal Architect / Vision](https://www.linkedin.com/in/j0j0r0)
 
-Eileen Quenin - Product Manager / Evangelist
+[Eileen Quenin - Product Manager / Evangelist](https://www.linkedin.com/in/eileenquenin)
 
-Brandon Kite - Lead Developer
+[Brandon Kite - Lead Developer](https://www.linkedin.com/in/bkite)
 
-Dylan Yelton - Developer
+[Dylan Yelton - Developer](https://www.linkedin.com/in/dylan-yelton-b11ba5aa)
 
-Michael Bachtel - DevOps / Developer
+[Michael Bachtel - DevOps / Developer](https://www.linkedin.com/in/michael-bachtel-617b7b2)
 
-Lucas Ontivero - Developer
+[Lucas Ontivero - Developer](https://ar.linkedin.com/in/lucasontivero)
 
-Adam Bronfin - Developer / Reviewer
+[Adam Bronfin - Developer / Reviewer](https://www.linkedin.com/in/adam-bronfin-694a7440)
 
-Benjamin Israelson - Developer / Reviewer
+[Benjamin Israelson - Developer / Reviewer](https://www.linkedin.com/in/benjaminisraelson)
 
-Forrest Fisher - Program Manager
+[Forrest Fisher - Program Manager](https://www.linkedin.com/in/forrestfisher)
 
-Robbin Schill - Program Manager
+[Robbin Schill - Program Manager](https://www.linkedin.com/in/robbin-schill-a798044)
 
-Krassi Krustev - Developer
+[Krassi Krustev - Developer](https://www.linkedin.com/in/krassimir-krustev-252483ab)
 
-Rob Eickmann - iOS Developer
+[Rob Eickmann - iOS Developer](https://www.linkedin.com/in/roberte3)
 
-Sean Ochoa - DevOps / Sysadmin
+[Sean Ochoa - DevOps / Sysadmin](https://www.linkedin.com/in/seanochoa)
 
-Paul Sonier - Developer / Reviewer
+[Paul Sonier - Developer / Reviewer](https://www.linkedin.com/in/paul-sonier-18135b2)
 
-Kevin Schumacher - Artist / Web Design
+[Kevin Schumacher - Artist / Web Design](https://www.linkedin.com/in/schubox)
+
+[Brian J Wilson - Architect](https://www.linkedin.com/in/brian-wilson-9325a776)
 
 Steve Owens - Reviewer
 
@@ -62,4 +64,3 @@ Kevin Duane - Reviewer
 
 Chris Moore - Reviewer
 
-Brian J Wilson - Architect
