@@ -106,7 +106,7 @@ pinterest-share: False
 pocket-share: False
 vkontakte-share: False
 
-disqus-shortname: "dragonchain"
+#disqus-shortname: "dragonchain"
 
 syntax-highlight: True
 
