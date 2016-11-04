@@ -40,16 +40,22 @@
             {% include comments.html %}
           {% endif %}
 
-
-          <hr />
-
-          {% if site.author_blurb %}
           <div class="author row">
             <img class="col-xs-4 col-sm-3 col-md-2" src="{{site.baseurl}}{{site.author_blurb_image}}" alt="Me" />
-            <p class="col-xs-8 col-sm-9 col-md-10">
-              {{ site.author_blurb }}
-            </p>
+            <span class="col-xs-8 col-sm-9 col-md-10">
+              <h3>
+                {{ site.author_blurb }}
+              </h3>
+              <h6>
+                The comments, views, and opinions expressed are those of the author and do not necessarily reflect the official policy or position of the Walt Disney Company, Disney Connected and Advanced Technologies, or any affiliated companies.
+                <br/><br/>
+                Any sample code presented are only examples and should not be utilized in real-world products.
+              </h6>
+            </span>
           </div>
+
+          {% if site.author_blurb %}
+          <hr />
           {% endif%}
         </div>
       </div>
