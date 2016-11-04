@@ -20,7 +20,9 @@
 
         {{ post.content | strip_html | markdownify | truncatewords: site.post-preview-words }}
 
-        <h4><a href="{{site.baseurl}}/blog/">Archive</a></h4>
+        <h4><a href="{{site.baseurl}}{{ post.url }}">Read More...</a></h4>
+
+        <h4><a href="{{site.baseurl}}/blog/">News Archive</a></h4>
 
       </div>
     </div>

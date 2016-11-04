@@ -2,7 +2,7 @@
 layout: post
 section-type: post
 title: Dragonchain Release
-category: tech
+category: technology
 tags: [ 'announcement' ]
 ---
 
