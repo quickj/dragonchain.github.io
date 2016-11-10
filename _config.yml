@@ -166,7 +166,7 @@ social:
 # 404 page #
 ############
 
-404-img: "/img/icon.png"
+404-img: "/img/mascot.png"
 
 ##################
 # GPG on Keybase #
