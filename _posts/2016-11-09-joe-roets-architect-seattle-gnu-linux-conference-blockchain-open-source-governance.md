@@ -22,6 +22,8 @@ Will offer ideas for how open source projects that are not cryptocurrencies may 
 
 Speaker is Dragonchain Founder and Maintainer [Joe Roets](https://www.linkedin.com/in/j0j0r0).
 
+<a class="btn btn-primary btn-lg" href="http://www.slideshare.net/createTank/seagl-2016-blockchain-and-cryptocurrency-for-open-source-project-governance">Slides available on SlideShare</a>
+
 [Event Page](https://osem.seagl.org/conference/seagl2016/program/proposal/121) - [SeaGL Conference](https://osem.seagl.org/conference/seagl2016) - [Schedule](https://osem.seagl.org/conference/seagl2016/schedule)
 
 
