@@ -121,18 +121,18 @@ a {
                 &:hover {
                     /* color: rgba($font-color, 0.8); */
                     outline: none;
-                    background-color: rgba($font-color, 0.3);
+                    background-color: rgba($font-color, 0.15);
                 }
                 &:focus,
                 &:active {
                     outline: none;
-                      background-color: rgba($font-color, 0.3);
+                      background-color: rgba($font-color, 0.15);
                 }
             }
             &.active {
                 outline: none;
                 a {
-                    background-color: rgba($font-color, 0.3);
+                    background-color: rgba($font-color, 0.15);
                     &:hover {
                         color: $navbar-color;
                     }
@@ -151,7 +151,7 @@ a {
         &.top-nav-collapse {
             padding: 0;
             background: $navbar-lg-collapse-background-color;
-            border-bottom: 1px solid rgba($font-color, 0.3);
+            border-bottom: 1px solid rgba($font-color, 0.05);
         }
     }
 }
