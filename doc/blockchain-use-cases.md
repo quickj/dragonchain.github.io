@@ -25,7 +25,8 @@ priority: 1.0
 - Generic crypto-store (blockchain powered transactional data store)
 - Payments platform
 - Organization internal currency (chargebacks)
-- Modeling of organizational micro-economies (interactions between teams)
+- Modeling of organizational micro-economies (interactions and incentivisation between teams)
+- Open source software project governance
 - Entitlements tracking
 - Intellectual Property (IP) marketplace
 - Internal/private prediction market (corporate or organization communications improvement)
