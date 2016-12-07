@@ -26,7 +26,7 @@ priority: 1.0
 - Payments platform
 - Organization internal currency (chargebacks)
 - Modeling of organizational micro-economies (interactions and incentivisation between teams)
-- Open source software project governance
+- Open source software project governance (See [Blockchain and Cryptocurrency for Free and Open Source Project Governance](http://www.slideshare.net/createTank/seagl-2016-blockchain-and-cryptocurrency-for-open-source-project-governance))
 - Entitlements tracking
 - Intellectual Property (IP) marketplace
 - Internal/private prediction market (corporate or organization communications improvement)
