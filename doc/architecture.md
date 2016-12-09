@@ -7,12 +7,18 @@ sitemap:
 priority: 1.0
 ---
 
-#### Version 3 - November 2016
+<h4 class="no_toc">Version 3 - November 2016</h4>
 
-##### [DRAFT]
+<h5 class="no_toc">[DRAFT]</h5>
 
 Joe Roets - j03 - joe@dragonchain.org
 
+---
+
+<h2 class="no_toc">Table of Contents</h2>
+
+* TOC
+{:toc}
 
 ---
 
