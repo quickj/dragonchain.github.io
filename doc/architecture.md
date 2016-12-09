@@ -153,7 +153,7 @@ We introduce here the concept of “context based verification” to the blockch
 
 ![Vanilla Blockchain Structure is One Dimensional](doc/img/vanilla-1d-blockchain-verification.png "Vanilla Blockchain Structure is One Dimensional")
 
-###### _Vanilla Blockchain Structure is One Dimensional_
+<div class="caption">Vanilla Blockchain Structure is One Dimensional</div>
 
 In Dragonchain, with context based approval, we add another dimension to that design. So the first level is achieved in a purely business context, that is with business logic implemented to provide transaction approval and system logic to arrange those transactions into blocks which are chained together. These blocks will have an abstract proof integrated such as PoW, PoS, or trust. This first level of verification can be considered as analogous to other blockchains. 
 
@@ -163,7 +163,7 @@ Any given node should ideally allow configuration to support or execute one or m
 
 ![Context Based Blockchain Verification](doc/img/context-based-blockchain-verification.png "Context Based Blockchain Verification")
 
-###### _Dragonchain Structure is Linked Between Blocks and Verification Contexts_
+<div class="caption">Dragonchain Structure is Linked Between Blocks and Verification Contexts</div>
 
 
 #### Level 1 - Business (Approval) Verification
@@ -240,7 +240,7 @@ This architecture may be best understood as a _“blockchain of blockchains”_.
 
 ![Blockchain of Blockchains](doc/img/blockchain-of-blockchains.png "Blockchain of Blockchains")
 
-###### _Blockchain of Blockchains_
+<div class="caption">Blockchain of Blockchains</div>
 
 ## Currency
 
