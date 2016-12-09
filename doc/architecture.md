@@ -392,6 +392,3 @@ limitations under the License.
 ---
 
 [Full Released Document PDF](/doc/DragonchainArchitecture.pdf)
-
-
-
