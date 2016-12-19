@@ -99,7 +99,7 @@ email-share: True
 fb-share: False
 twitter-share: True
 linkedin-share: True
-reddit-share: True
+reddit-share: False
 google-plus-share: False
 tumblr-share: False
 pinterest-share: False
