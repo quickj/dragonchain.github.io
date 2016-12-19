@@ -159,12 +159,15 @@ a {
 .intro {
     display: table;
     width: 100%;
-    height: auto;
+    height: 100%;
     padding: 100px 0;
     text-align: center;
     color: $intro-text-color;
     {% if site.background-img %}
-    background: url({{ site.background-img }}) no-repeat bottom center scroll;
+    background: url({{ site.background-img }});
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     {% endif %}
     background-color: $header-background-color;
     -webkit-background-size: cover;
