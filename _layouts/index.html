@@ -22,6 +22,19 @@
 
     {% include footer.html %}
 
+    <div class="author row">
+        <img class="col-xs-4 col-sm-3 col-md-2 col-md-offset-3" src="{{site.baseurl}}{{site.author_blurb_image}}" alt="Me" />
+        <span class="col-xs-8 col-sm-9 col-md-4">
+            <h3>
+                {{ site.author_blurb }}
+            </h3>
+            <h6>
+              The comments, views, and opinions expressed are those of the author and do not necessarily reflect the official policy or position of the Walt Disney Company, Disney Connected and Advanced Technologies, or any affiliated companies.
+            </h6>
+            <p><br><br><br><br><br><br></p>
+        </span>
+    </div>
+
     {% include js.html %}
 
   </body>
