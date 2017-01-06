@@ -16,4 +16,4 @@ tags: [ 'news' ]
 
 > Disney’s move reinforces Blockchain utility. Why would a company like Disney make a foray into Blockchain? What could be the possible utility? One possibility could be that Disney could use Blockchain to track ‘points’ as customers play games at their theme parks. Another possibility is that Disney is pondering the introduction of tokens or some sort of it's own currency that could be used at their facilities. In any case, Blockchain can potentially allow Disney to carry out transactions more seamlessly and securely. Bitcoin and Blockchain are revolutionising the world as we breathe. More companies are exploring the way they can use technology driven by Blockchain. Disney is no exception.
 
-[Full Article](http://dcebrief.com/blockchain-weekly-recap-10-22-2016/)
+[Full Article](https://cointelegraph.com/news/what-disney-actually-wants-to-achieve-with-its-own-blockchain)

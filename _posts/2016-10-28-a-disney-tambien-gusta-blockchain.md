@@ -20,4 +20,4 @@ _[...Little by little, more and more companies are joining the blockchain fashio
 
 _[The 15 pages of documentation available on GitHub detail some features of this system, such as ease of integration, ability to operate with multiple currencies, interoperability with other blockchains, or security and trust.]_
 
-[Full Article](http://finletter.de/4009/blockchain-kolumne-11-uno-disney-blockchain/)
+[Full Article](http://www.ticbeat.com/tecnologias/a-disney-tambien-el-gusta-el-blockchain/)
