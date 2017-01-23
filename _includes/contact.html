@@ -1,15 +1,11 @@
 
 <!-- Contact Start -->
 
-<section id="{{ page.section-type }}" class="container content-section text-center">
+<section id="{{ page.section-type }}" class="container content-section">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
 
       {{ page.content | markdownify }}
-          <p><a href="https://dragonchain-slack.herokuapp.com/">Slack team sign up</a></p>
-          <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
-          <p><a href="mailto:{{ site.support.email }}">{{ site.support_email }}</a></p>
-
       <!--{% if site.email %}-->
         <!--{% if site.email contains '@' %}-->
           <!--{% assign newemail = site.email | split: '@' %}-->
