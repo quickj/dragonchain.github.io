@@ -64,28 +64,29 @@ Joe Roets - j03 - joe@dragonchain.org
 1. 其他一些证明算法
 
 
-Given such an abstraction, a user would be able to configure one or more simultaneous proofs to suit business need, whilst a system developer may build new proof implementations as blockchain technology progresses.
+
+抽象出共识算法部分，一个用户可以同时配置一个或多个共识算法来满足不同商业应用的需求，同时开发者也能自己定制开发出一套新的共识算法。
+
 
 It is possible to conduct PoW even in the case of fixed time length block constructions (see block construction discussion elsewhere in this paper) by spanning one or more proof implementations across blocks. As an example, let’s say that we have a particular use case that requires higher than normal security. If we assume that Trust is implemented by default, but we desire to configure some amount of trustless verification, we may wish to configure some level of Proof of Work on our blockchain. Depending upon the difficulty level configured, and given the nature of PoW algorithms, we may not see a PoW solution for every block. Some blocks would have no PoW, and the PoW answer may only appear occasionally. In such a case, it may be reasonable to configure two or more levels of PoW. A higher difficulty proof may be tuned to appear approximately every 20 minutes, and a lower difficulty proof may be tuned to appear approximately every 2 seconds. In the same manner other proofs such as PoS may be applied simultaneously within a single chain. An interesting philosophical point is that such proofs may be used in competition against a future attacker rather than as competition with other miners for a block reward.
+有可能实施PoW算法会利用在一定时间内固定区块链长度(查看本文档区块构造的讨论)通过生成一个或者多个共识算法在交叉在区块中的这种情况。作为一个例子，我们在一个特别的应用案例中确实需要更高级别的安全需求。如果我们假设Trust是默认的共识实现，但是我们想要配置上一些不可信的验证，我们可能希望配置工作量证明这种更高级别的共识实现。依赖于不同级别的共识算法配置，给出了PoW算法的性质，PoW方案可能不会出现在每个区块中。有些区块有可能不会使用PoW方案，也许PoW只会偶尔出现。一个更高难度的共识算法也许会每隔2秒偶尔发生。同样的方式，另外的共识算法例如PoS也会同时发生在一个单独的链上。一个有趣的哲理观点表示这些共识算法用于抵御未来攻击比用在矿工竞争奖励更有用。
 
-#### Checkpointing and Proof of Existence
+#### 检查和验证
 
 Another element in the abstraction of proof is the further ability to hybridize by checkpointing into other (public) blockchains. This can be seen as a first level or simple interoperability between blockchains, public or private. Of particular potential value, is the ability to ascertain risk by measuring a public blockchain’s attributes. That is, if tied to a public blockchain which uses PoW such as Bitcoin, the system can estimate the amount of hashpower that has been applied since the checkpoint and even extrapolate that compute power to dollars spent. With this, a risk unit may be developed that shows how much compute power would be needed (and how much that would cost) to calculate the percentage likelihood of success in an attempt to counterfeit a given artifact (e.g. a transaction of high value). In the same manner, tying a checkpoint to a public blockchain based on PoS, the system could measure the amount of assets that must be held (and likely sacrificed) in order to counterfeit the transaction in question. See discussion of Level 5 verification below for more information.
 
-## Transaction Definition
-A transaction is the basis with which all events or data transfers are recorded within the blockchain platform. The system should define a flexible and extensible standardized transaction structure.
+## Transaction定义
+一个Transaction是所有事件和数据传输记录在区块链上的基础。系统需要定义一个灵活的和可扩展的标准交易数据结构。
+具体实施选项:
 
-Implementations options:
-
-- JSON with standardized structure
+- JSON (标准结构)
 - JWT (JSON Web Token)
-- Other encoded structure (with supporting libraries in multiple languages)
+- 其他编码结构 (支持多种语言的库)
 
 ### Header
 
-Contains system or network defined standard standard metadata fields for the transaction.
-
-Example fields:
+包含transaction的系统和网络的一些标准字段。
+举例字段:
 
 - `Transaction ID`
 - `Transaction type`
@@ -98,8 +99,7 @@ Example fields:
 - `Entity`
 
 ### Payload
-Arbitrary structure and content, defined at the business level and implemented or controlled within the level 1 approval code.
-
+任意的结构和内容，定义在商业应用层，具体实现和控制出现在approval(level 1)层的代码中。
 Some level of structure within the payload (e.g. fields and structures) may be implemented as network-wide templates to be utilized and noted based upon the optional `transaction class` header field. This will allow nodes to implement some needed behavior defined at the Enterprise or network level, as well as simplification of capabilities such as currency. See below for examples of transaction class.
 
 ### Signature
