@@ -71,13 +71,13 @@ Joe Roets - j03 - joe@dragonchain.org
 It is possible to conduct PoW even in the case of fixed time length block constructions (see block construction discussion elsewhere in this paper) by spanning one or more proof implementations across blocks. As an example, let’s say that we have a particular use case that requires higher than normal security. If we assume that Trust is implemented by default, but we desire to configure some amount of trustless verification, we may wish to configure some level of Proof of Work on our blockchain. Depending upon the difficulty level configured, and given the nature of PoW algorithms, we may not see a PoW solution for every block. Some blocks would have no PoW, and the PoW answer may only appear occasionally. In such a case, it may be reasonable to configure two or more levels of PoW. A higher difficulty proof may be tuned to appear approximately every 20 minutes, and a lower difficulty proof may be tuned to appear approximately every 2 seconds. In the same manner other proofs such as PoS may be applied simultaneously within a single chain. An interesting philosophical point is that such proofs may be used in competition against a future attacker rather than as competition with other miners for a block reward.
 有可能实施PoW算法会利用在一定时间内固定区块链长度(查看本文档区块构造的讨论)通过生成一个或者多个共识算法在交叉在区块中的这种情况。作为一个例子，我们在一个特别的应用案例中确实需要更高级别的安全需求。如果我们假设Trust是默认的共识实现，但是我们想要配置上一些不可信的验证，我们可能希望配置工作量证明这种更高级别的共识实现。依赖于不同级别的共识算法配置，给出了PoW算法的性质，PoW方案可能不会出现在每个区块中。有些区块有可能不会使用PoW方案，也许PoW只会偶尔出现。一个更高难度的共识算法也许会每隔2秒偶尔发生。同样的方式，另外的共识算法例如PoS也会同时发生在一个单独的链上。一个有趣的哲理观点表示这些共识算法用于抵御未来攻击比用在矿工竞争奖励更有用。
 
-#### 检查和验证
+#### 校验和存在证明
 
 Another element in the abstraction of proof is the further ability to hybridize by checkpointing into other (public) blockchains. This can be seen as a first level or simple interoperability between blockchains, public or private. Of particular potential value, is the ability to ascertain risk by measuring a public blockchain’s attributes. That is, if tied to a public blockchain which uses PoW such as Bitcoin, the system can estimate the amount of hashpower that has been applied since the checkpoint and even extrapolate that compute power to dollars spent. With this, a risk unit may be developed that shows how much compute power would be needed (and how much that would cost) to calculate the percentage likelihood of success in an attempt to counterfeit a given artifact (e.g. a transaction of high value). In the same manner, tying a checkpoint to a public blockchain based on PoS, the system could measure the amount of assets that must be held (and likely sacrificed) in order to counterfeit the transaction in question. See discussion of Level 5 verification below for more information.
 
 ## Transaction定义
-一个Transaction是所有事件和数据传输记录在区块链上的基础。系统需要定义一个灵活的和可扩展的标准交易数据结构。
-具体实施选项:
+一个Transaction是所有事件和数据传输记录在区块链上的基础。系统应该定义灵活且可扩展的标准化Transaction结构。
+备选方案:
 
 - JSON (标准结构)
 - JWT (JSON Web Token)
@@ -99,20 +99,21 @@ Another element in the abstraction of proof is the further ability to hybridize 
 - `Entity`
 
 ### Payload
-任意的结构和内容，定义在商业应用层，具体实现和控制出现在approval(level 1)层的代码中。
-Some level of structure within the payload (e.g. fields and structures) may be implemented as network-wide templates to be utilized and noted based upon the optional `transaction class` header field. This will allow nodes to implement some needed behavior defined at the Enterprise or network level, as well as simplification of capabilities such as currency. See below for examples of transaction class.
+
+在业务层次上定义的任意结构和内容，并在approval(level 1)层代码中实现或控制。
+在有效payload(例如字段和结构)内的某种级别的结构可以被实现为网络的模板，根据可选的“transaction class”字段来使用和控制。
+他将允许节点实现企业或网络级别上定义的一些需要的行为，以及简化诸如货币之类的功能。参见下面的事务类示例。
 
 ### Signature
 
-Portion of the transaction holding a cryptographic signature to allow parties to prove the source and/or that the contents of the transaction are unaltered since the signing (i.e. tamper evident). The signature within the transaction should not be required from the transaction source (e.g. client or 3rd party system) as some clients may not be cryptographically enabled or aware of the blockchain platform. Alternatively, a client system may for example invoke a process of multi-party signing prior to transaction submission. Either way, the blockchain platform node’s Transaction Service component should cryptographically sign any inbound transaction that it accepts for processing (with its configured key pair).
+transaction的一部分持有一个密码签名，以允许双方证明transaction的来源和/或交易的内容自签名后没有改变(例如篡改证据)。transaction中的签名不应该来自transaction来源，例如有些客户端没有签名的能力或者没有意识到后续的区块链。或者，一个客户端系统可以在transaction提交之前调用多方面的签名。无论如何，区块链平台端的Transaction服务组件应该加密任何到达接受处理的ransaction。
+认可的要求:
 
-Perceived requirements:
+-该结构应该允许多重和嵌套签名
+-该签名应该在签名结构本身的所有字段中散列，以使签名本身不容易被篡改
+-该结构应该在验证记录(块验证)签名过程中重新使用
 
-- The structure should allow for multi-party and nested signings
-- The signature should hash all fields within the signature structure itself minus hash and signature to make the signature itself tamper evident
-- The structure should see re-use in the verification record (block verification) signing process
-
-Fields:
+字段:
 
 - `Signatory`
 - `Hash`
@@ -122,14 +123,14 @@ Fields:
 - `Signature`
 - `Child Signature` _(optional)_
 
-Implementation options:
+实现选项:
 
 - JWS (JSON Web Signature)
 - Custom JSON
 
 ### Classes
 
-Some examples of possible transaction classes are:
+一些可能的transaction Classes的示例:
 
 - `Default` _(custom Level 1 business payload structure)_
 - `Currency`
@@ -139,9 +140,9 @@ Some examples of possible transaction classes are:
 - `Information interoperability` _(foreign blockchain currency or information payload)_
 
 
-## Block Definition
+## 块定义
 
-Block definition may see multiple implementations, although there are more or less common elements involved such as:
+块定义可能会看到多个实现，尽管有更多或更少的常见元素，例如
 
 - `Block ID`
 - `Timestamp`
@@ -152,13 +153,11 @@ Block definition may see multiple implementations, although there are more or le
 - `Block period`
 - `Verification attributes`
 
-An interesting part of block definition design that is often not considered of is the question of _when_ the block is formed. In Bitcoin or other PoW systems, a block is formed when the PoW algorithm is solved for the current network difficulty. This may happen after 30 seconds or 30 minutes. It is variable and random, but the network seeks to tune the difficulty in order to tune the average block time to 10 minutes.
+块定义设计中通常不考虑的一个有趣的部分是这个块何时形成的问题。在比特币或其他PoW系统中，当PoW算法需要解决目前的网络难度时，就会形成一个块。这可能在30秒或30分钟后发生。它是可变和随机的，但是网络会试图调整难度，以调整平均块时间到10分钟。
 
-In trust based systems, there would be no absolute need to maintain a variable time based block. In many real world systems, it is in fact seen as a detriment to its use that Bitcoin cannot offer a fixed or faster average block time. In this architecture, we may desire a more appropriate block time, such as a fixed time in seconds (e.g. 5 seconds). The definition of such fast and fixed block times leads to a question of consensus, that is, how does the entire network come to consensus every 5 seconds? With context based verification and the concept of a “blockchain of blockchains” (discussed below), the system comes to gradual consensus with risk controlled by individual business users.
+## 验证和共识
 
-## Verification and Consensus
-
-We introduce here the concept of “context based verification” to the blockchain discussion. To illuminate, consider Bitcoin or any other existing blockchain implementation. They primarily use a set proof algorithm (e.g. PoW) to assemble blocks over time and to come to consensus over which blocks and which chain is the common, agreed truth.
+我们在这里引入了“基于上下文的验证”的概念，以进行区块链的讨论。 可以考虑比特币或其他现有的区块链实现。他们主要使用一种证明算法(例如PoW)来组装区块，并达成一致意见，即哪些块和哪个链是通用的和公认的。
 
 ![Vanilla Blockchain Structure is One Dimensional](doc/img/vanilla-1d-blockchain-verification.png "Vanilla Blockchain Structure is One Dimensional")
 
