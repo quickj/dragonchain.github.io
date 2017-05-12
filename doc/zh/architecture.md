@@ -28,23 +28,23 @@ Joe Roets - j03 - joe@dragonchain.org
 
 # 龙链架构
 
-该文档概述和传达了龙链平台的整体架构和设计方案，以便第三方商业应用更加轻松地接入龙链技术。在作者看来，接入简单的区块链技术是一个不断增长的需求。龙链的私有链的奇妙实现方式满足了那些想在商业区块链应用中保护信息和控制商业过程的需求。该文档寻求阐明龙链架构的一些不错成就和例子。
+该文档概述和传达了龙链平台的整体架构和设计方案，以便第三方业务应用更加轻松地接入龙链技术。在作者看来，接入简单的区块链技术是一个不断增长的需求。龙链的私有链的奇妙实现方式满足了那些想在商业区块链应用中保护信息和控制业务流程的需求。该文档寻求阐明龙链架构的一些不错成就和例子。
 
 
 
 ## 架构目标
 
-1. 让现有系统更轻松地接入龙链。
-1. 让开发工程师更熟悉区块链，去中心系统和加密技术。
+1. 易于集成现有系统
+1. 对于不熟悉区块链、分布式系统和密码学的传统工程师和程序员来说，容易上手
 1. 客户端和服务端交互完全基于RESTful协议。
-1. 灵活架构(为一些将来不可预见的应用)
+1. 简单的体系结构(灵活且可用于不可预见的应用)
 1. 默认为商业数据提供保护服务
-1. 允许应用更加专注于商业过程的控制
+1. 允许更集中于业务流程的控制
 1. 固定一段时间区块的长度
 1. 更短和更快的区块
-1. 不定货币区块链(支持多种货币)
-1. 没有基础货币
-1. 协同嫁接其他公有链和私有链
+1. 不定货币区块链(多货币支持)
+1. 无基础货币
+1. 与公有链和私有链的互操作性
 1. 标准采用 [see W3C Blockchain Community Group blockchain standardization](https://github.com/w3c/blockchain/blob/master/standards.md) 和 [Disney Blockchain Standardization Notes](https://dragonchain.github.io/blockchain-standardization)
 
 
@@ -54,28 +54,27 @@ Joe Roets - j03 - joe@dragonchain.org
 
 在比特币和其他加密货币，我们一般使用“工作量证明”(PoW)共识算法。龙链抽象了出了“证明”，支持多种共识证明算法的实现。某些用户想使用完全基于信任的系统，例如在一个私有链中。另外也能在一个混合的证明配置中发现“工作量证明”在抵御黑客攻击的价值。(例如,一个潜在的攻击者打算获取一组私钥，但是他需要额外消耗大量的计算来实现共识证明，以完成对区块的收集。)
 
-
+在比特币和其他大多数加密货币中，我们见证了“工作证明”(PoW)算法的使用，作为在“信任”系统中达成共识的基础。在这个体系结构中，“证明”将被抽象出来，并可以用一个或多个方法实现给定的区块链。对于一些使用，人们可能希望使用基于信任的系统，例如，在一个完全私有的区块链系统中。一个混合的证明中,为了抵御攻击，添加额外的安全工作(即潜在的攻击者不仅需要妥协或获得一组私钥,但也需要执行额外的计算完成给定区块链收集的证据。）
 
 工作量证明实现:
 
 1. 信任模式 (默认)
 1. 工作量证明 (PoW)
 1. 股权证明 (PoS)
-1. 其他一些证明算法
+1. 其他一些共识证明算法
 
 
 
-抽象出共识算法部分，一个用户可以同时配置一个或多个共识算法来满足不同商业应用的需求，同时开发者也能自己定制开发出一套新的共识算法。
+考虑到这种抽象，用户将能够配置一个或多个同步的共识证明来适应业务需求，而系统开发人员可能会构建新的证明实现，因为区块链技术也在进步。
 
-
-It is possible to conduct PoW even in the case of fixed time length block constructions (see block construction discussion elsewhere in this paper) by spanning one or more proof implementations across blocks. As an example, let’s say that we have a particular use case that requires higher than normal security. If we assume that Trust is implemented by default, but we desire to configure some amount of trustless verification, we may wish to configure some level of Proof of Work on our blockchain. Depending upon the difficulty level configured, and given the nature of PoW algorithms, we may not see a PoW solution for every block. Some blocks would have no PoW, and the PoW answer may only appear occasionally. In such a case, it may be reasonable to configure two or more levels of PoW. A higher difficulty proof may be tuned to appear approximately every 20 minutes, and a lower difficulty proof may be tuned to appear approximately every 2 seconds. In the same manner other proofs such as PoS may be applied simultaneously within a single chain. An interesting philosophical point is that such proofs may be used in competition against a future attacker rather than as competition with other miners for a block reward.
-有可能实施PoW算法会利用在一定时间内固定区块链长度(查看本文档区块构造的讨论)通过生成一个或者多个共识算法在交叉在区块中的这种情况。作为一个例子，我们在一个特别的应用案例中确实需要更高级别的安全需求。如果我们假设Trust是默认的共识实现，但是我们想要配置上一些不可信的验证，我们可能希望配置工作量证明这种更高级别的共识实现。依赖于不同级别的共识算法配置，给出了PoW算法的性质，PoW方案可能不会出现在每个区块中。有些区块有可能不会使用PoW方案，也许PoW只会偶尔出现。一个更高难度的共识算法也许会每隔2秒偶尔发生。同样的方式，另外的共识算法例如PoS也会同时发生在一个单独的链上。一个有趣的哲理观点表示这些共识算法用于抵御未来攻击比用在矿工竞争奖励更有用。
+即使是在固定时间长度块结构的情况下也可以进行PoW(参见本文中其他地方的块构造讨论)，通过跨越块来跨越一个或多个共识证明实现。举个例子，假设我们有一个特定的用例需要高于正常的安全性。如果我们假设信任是默认实现的，但是我们希望配置一些可信的验证，我们可能希望在区块链上配置一些工作证明。根据所配置的难度级别，并给出了PoW算法的性质，我们可能不会看到每个块的PoW解决方案。一些区块将没有PoW，而PoW可能只是偶尔出现。在这种情况下，可以合理配置两个或更多的PoW级别。一个更高难度的证明可能大约每20分钟出现一次，并且一个较低难度的证明可能大约每2秒出现一次。同样，其他的证明，如PoS，也可以同时应用于单个链中。一个有趣的哲学观点是，这样的证据可能被用于对抗未来的攻击者，而不是与其他矿工竞争以获得一个块的奖励。
 
 #### 校验和存在证明
 
-Another element in the abstraction of proof is the further ability to hybridize by checkpointing into other (public) blockchains. This can be seen as a first level or simple interoperability between blockchains, public or private. Of particular potential value, is the ability to ascertain risk by measuring a public blockchain’s attributes. That is, if tied to a public blockchain which uses PoW such as Bitcoin, the system can estimate the amount of hashpower that has been applied since the checkpoint and even extrapolate that compute power to dollars spent. With this, a risk unit may be developed that shows how much compute power would be needed (and how much that would cost) to calculate the percentage likelihood of success in an attempt to counterfeit a given artifact (e.g. a transaction of high value). In the same manner, tying a checkpoint to a public blockchain based on PoS, the system could measure the amount of assets that must be held (and likely sacrificed) in order to counterfeit the transaction in question. See discussion of Level 5 verification below for more information.
+抽象的另一个元素是通过对其他(公共)区块链的检查来进行进一步"杂交"的能力。这可以被看作是第一级或者是区块链、公共或私有之间的简单互操作性。特别的潜在价值，是通过测量公共区块链的属性来确定风险的能力。也就是说，如果与使用PoW(如比特币)的区块链捆绑在一起，系统可以估计自检查点以来已经应用的hashpower的数量，甚至可以推断计算能力用于花费的金额。有了这个，就可以开发出一个风险单元，它可以显示出需要多少计算能力(以及需要多少成本)来计算成功的可能性，以试图伪造一个给定的东西(例如，一个高价值的交易)。以同样的方式，将一个检查点与基于PoS的公共区块链捆绑在一起，系统可以度量必须持有(并且可能是献出)的资产的数量，以伪造交易。有关更多信息，请参阅下面的第5级验证。
 
 ## Transaction定义
+
 一个Transaction是所有事件和数据传输记录在区块链上的基础。系统应该定义灵活且可扩展的标准化Transaction结构。
 备选方案:
 
@@ -106,12 +105,12 @@ Another element in the abstraction of proof is the further ability to hybridize 
 
 ### Signature
 
-transaction的一部分持有一个密码签名，以允许双方证明transaction的来源和/或交易的内容自签名后没有改变(例如篡改证据)。transaction中的签名不应该来自transaction来源，例如有些客户端没有签名的能力或者没有意识到后续的区块链。或者，一个客户端系统可以在transaction提交之前调用多方面的签名。无论如何，区块链平台端的Transaction服务组件应该加密任何到达接受处理的ransaction。
-认可的要求:
+transaction的一部分持有一个密码签名，以允许双方证明transaction的来源和/或交易的内容自签名后没有改变(例如篡改证据)。transaction中的签名不应该来自transaction来源，例如有些客户端没有签名的能力或者没有意识到后续的区块链。或者，一个客户端系统可以在transaction提交之前调用多重签名。无论如何，区块链平台端的Transaction服务组件应该加密任何到达接受处理的ransaction。
+感知到的要求:
 
 -该结构应该允许多重和嵌套签名
 -该签名应该在签名结构本身的所有字段中散列，以使签名本身不容易被篡改
--该结构应该在验证记录(块验证)签名过程中重新使用
+-该结构应该在记录验证(块验证)签名过程中重新使用
 
 字段:
 
@@ -163,18 +162,17 @@ transaction的一部分持有一个密码签名，以允许双方证明transacti
 
 <div class="caption">Vanilla Blockchain Structure is One Dimensional</div>
 
-In Dragonchain, with context based approval, we add another dimension to that design. So the first level is achieved in a purely business context, that is with business logic implemented to provide transaction approval and system logic to arrange those transactions into blocks which are chained together. These blocks will have an abstract proof integrated such as PoW, PoS, or trust. This first level of verification can be considered as analogous to other blockchains.
+在龙链中，通过基于上下文的核准，我们为该设计添加了另一个维度。因此，第一级是在纯业务上下文中实现的，这是用业务逻辑实现的，提供了对transaction核准和一些其他系统逻辑，以便将这些transaction安排到被链接在一起的块中。这些块将具有一个抽象的共识算法集成，如PoW、PoS或Trust。第一级的验证可以被视为类似于其他区块链。
 
-It is when other verification contexts are added that we see added value to even trust based systems.
+当添加其他验证上下文时，我们会看到被添加的上下文甚至是基于信任的系统。
 
-Any given node should ideally allow configuration to support or execute one or more of the verification phases described below.
-
+任何给定的节点都应该允许配置支持或执行下面描述的一个或多个验证阶段。
 ![Context Based Blockchain Verification](doc/img/context-based-blockchain-verification.png "Context Based Blockchain Verification")
 
 <div class="caption">Dragonchain Structure is Linked Between Blocks and Verification Contexts</div>
 
 
-#### Level 1 - Business (Approval) Verification
+#### Level 1 - 业务(核准)验证
 
 Approval functionality is implemented and configured by the business integrator. This is the placement for integration of “real world” value. Business logic defined by an organization or blockchain platform user is configured to be executed by a blockchain node.
 
