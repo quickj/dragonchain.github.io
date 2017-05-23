@@ -172,15 +172,13 @@ transaction的一部分持有一个密码签名，以允许双方证明transacti
 <div class="caption">Dragonchain Structure is Linked Between Blocks and Verification Contexts</div>
 
 
-#### Level 1 - 业务(核准)验证
+#### Level 1 - 业务(Approval)验证
 
-Approval functionality is implemented and configured by the business integrator. This is the placement for integration of “real world” value. Business logic defined by an organization or blockchain platform user is configured to be executed by a blockchain node.
+5级节点将为一个或多个公共块链提供桥梁，并允许客户端与其进行交互（例如比特币，以太坊，莱特币等）。
 
-Here also is where the transaction payload is defined by the business to be what is needed for their purposes.
+这将提供一个重要的功能是检查点，或在公共块链上放置“存在证明”的数据的散列。对于检查点操作，5级节点将接受transaction，任何级别的块验证，任意字符串或任意散列。该参数将被散列，并将该哈希添加到放在公共块链上的transaction中。这个散列的存在可以用来证明这个数据是存在的，在一定的状态下使用公共的块链数据。组织可以使用这种证明来测量和减轻风险，这是基于从那时以来耗费的全网算力的估计或计算（在工作块证明的情况下）。例如，一个200万美元的交易可能会传递给5级节点，以便尽快放置在比特币块上，而在某个时间点，一方可以使用该信息作为来源来衡量散列数量自那时以来已经消耗了，计算攻击者可以成功地假冒比特币块给出特定百分比的全网算力的可能性，并推断或估计耗费这个算力的成本（硬件或货币的牺牲）。如果这一过程导致对业务满意的风险评估，则可以信任并接受交易。
 
-Transactions are arranged and passed to the provided business logic which will determine approval or denial. Approved transactions will be assembled into a “block” generically referred to as a “verification record”.
-
-The payload field of every transaction may be stripped before or after assembling the final block in order to maintain control of the distribution of actual business data. That is, no business payload data will be disbursed as part of the consensus process, and data will remain local on a Level 1 node unless the business owner explicitly pushes the data to another node (e.g. for backup/DR), or explicitly allows an authorized node to pull the data via a subscription feed.
+公共桥梁功能的另一个重要方面是在私人和公共方面跟踪资产的能力。也就是说，考虑到使用比特币地址实现的内部货币（请参阅本文档中的货币部分），可以使用公共API或服务在比特币上发出令牌，并且该令牌可能同时存在于私有块链和比特币公开块中。密钥或钱包的所有者将能够使用公共或私有块链互动来传送令牌或资产。 5级节点可用于在块链之间跟踪该资产，并使它们保持彼此同步。
 
 #### Level 2 - Enterprise (Validation) Verification
 
@@ -222,49 +220,43 @@ A Level 3 node will assemble a new verification record containing:
 
 Defined network wide (Enterprise+), a level 4 node will provide a notary functionality to the consensus process. Hosted by an external partner, a level 4 node would cryptographically sign any level 3 verification records that it receives. This function allows the Level 4 node to act as an independent witness to level 3 verifications.
 
-#### Level 5 - Public Checkpoint
+#### Level 5 - 公有链检查点
 
-A Level 5 node will provide a bridge to one or more public blockchains and allow clients to interact with them (e.g. Bitcoin, Ethereum, Litecoin, etc.).
+5级节点将为一个或多个公共块链提供桥梁，并允许客户端与其进行交互（例如比特币，以太坊，莱特币等）。
 
-An important feature that this would provide is that of checkpointing, or placing a hash of an artifact for “proof of existence” on a public blockchain. For checkpointing operations, the Level 5 node will accept a transaction, a block verification of any level, an arbitrary string, or an arbitrary hash. The argument will be hashed and this hash added to a transaction placed on the public blockchain(s). The existence of this hash can be used to prove that the artifact was in existence and at a certain state using public blockchain data. An organization may use this proof to measure and mitigate risk based upon the estimate or calculation of hashpower expended since that time (in the case of a proof of work blockchain). For example, a $2 Million transaction may be passed to a Level 5 node to be placed as soon as possible on the Bitcoin blockchain, and at some point in time later, a party may use that information as a source to measure the amount of hashpower that has been expended since that time, calculate the probability that an attacker could successfully counterfeit that Bitcoin block given a particular percentage of global hashpower, and extrapolate or estimate the cost to expend that hashpower (as well as the sacrifice of hardware and/or currency due to network collapse). If this process results in a risk evaluation that is satisfactory to the business, the transaction can be trusted and accepted.
+这将提供一个重要的功能是检查点，或在公共块链上放置“存在证明”的数据的散列。对于检查点操作，5级节点将接受交易数据，任何级别的块验证数据，任意字符串或任意散列数据。该参数将被哈希，并将该哈希值添加到放在公共块链上的交易中。这个哈希的存在可以用来证明这个数据是存在的，在一定的状态下使用公共的块链数据。组织可以使用这种证明来测量和减轻风险，这是基于从那时以来耗费的算力的估计或计算（在工作块证明的情况下）。例如，一个200万美元的交易可能会传递给5级节点，以便尽快放置在比特币块上，而在某个时间点，一方可以使用该信息作为来源来衡量散列数量自那时以来已经消耗了，计算攻击者可以成功地假冒比特币块给出特定百分比的全局散列强度的可能性，并推断或估计耗费这个算力的成本（以及硬件和/或货币的牺牲）。如果这一过程导致对业务满意的风险评估，则可以信任并接受交易。
 
-Another important aspect of the public bridge functionality is the ability to track assets between the private and public side. That is, given an internal currency implemented to use Bitcoin addresses (see currency section elsewhere in this document), a token may be issued on Bitcoin using public APIs or services and this token may live in both the private blockchain and the Bitcoin public blockchain. Owners of the keys or wallet would be able to transfer the token or asset with either public or private blockchain interactions. The Level 5 node may be used to track this asset between the blockchains as well as keep them in sync with each other.
+公共桥梁功能的另一个重要方面是在私人和公共方面跟踪资产的能力。也就是说，考虑到使用比特币地址实现的内部货币（请参阅本文档中的货币部分），可以使用公共API或服务在比特币上发出令牌，并且该令牌可能同时存在于私有块链和比特币公开块中。密钥或钱包的所有者将能够使用公共或私有块链互动来传送令牌或资产。 5级节点可用于在块链之间跟踪该资产，并使它们保持彼此同步。
 
-#### Level X - Proprietary context verification
+#### Level X - 专有的上下文验证
 
-It should be possible for a business, Enterprise, or the entire network to define a custom verification context and have it executed to meet business needs.
+业务、企业或整个网络都应该能够定义自定义验证上下文，并执行它以满足业务需求。
+可以配置一个节点来运行任意的验证上下文，这将以下列方式触发:
+1。通过接收来自另一个节点的广播(连续或非连续的阶段)
+1。定时或定时的触发器(如cron)
+1。通过观察者模式通知
 
-A node may be configured to run an arbitrary verification context which would be triggered in the following manners:
+### 区块链的区块链 概念
 
-1. By the receipt of a broadcast from another node (in sequential or non-sequential phase)
-1. By a timed or periodic trigger (e.g. cron)
-1. By notification via observer pattern
-
-### Blockchain of Blockchains Concept
-
-This architecture may be best understood as a _“blockchain of blockchains”_. That is, a business approval function node (see Level 1 below) functions much as a standard blockchain on a 1 dimensional level. However, each business concern will generally have its own node to do this work, each with its own blockchain. It is where these blockchains become combined that consensus is reached.
+这种架构最好被理解为“区块链的区块链”。也就是说，一个业务审批函数节点(参见下面的第1级)在一个一维的级别上是一个标准的区块链。但是，每个业务关注点通常都有自己的节点来完成这项工作，每个都有自己的区块链。正是在这里，这些区块链形成了共识。
 
 ![Blockchain of Blockchains](doc/img/blockchain-of-blockchains.png "Blockchain of Blockchains")
 
 <div class="caption">Blockchain of Blockchains</div>
 
-## Currency
+## 货币
 
-This architecture should be multi-currency capable. That is, generally that if a currency use case is defined, that a node(s) may define a currency and support its use. More than one currency may be in use concurrently on the network as a whole.
+该架构允许用户对货币进行建模，并在设计后期获利。 用户可以将来自多个源的信息放在块链上方，随时间观察其使用情况，并根据业务和客户的优先级确定其价值。 在这一点上，资产和活动可以获利，并且可以开发采矿或铸造算法，这将激励企业的员工，团队或客户。 量化，货币化和激励的过程可能是无休止的调整，但将提供透明的经济制度。
+该体系结构的实现应该为便于部署提供一个或多个模板或可配置的货币。这样的实现可以定义诸如挖矿或铸币算法、寻址、钱包管理等等，用户还应该为进一步的实验和定制提供可扩展的功能。
 
-That said, this architecture should not define a “base” currency, or one that the system itself runs upon. If such a use case arises (as indeed it is very likely to see value in the availability of a currency whereby nodes may pay each other for verifications), it is the philosophy of this architecture that a node should be configured to create and maintain that currency. This will allow a more flexible development of marketplaces than any attempt to define that early in the development of the platform.
+### 货币模型
 
-The implementation of this architecture should likely provide one or more templated or configurable currencies for ease of deployment. Such implementations may define such things as mining or minting algorithms, addressing, wallet management, and etc. They should also be extensible by users as possible for further experimentation and customization.
+该体系结构允许用户在设计中对货币进行建模，并将其货币化。用户可以从区块链上的许多源处放置信息，观察其随时间的使用，并根据业务和客户的优先级确定其价值。在这一点上，资产和活动可以被货币化，可以开发一种挖矿算法，这将激励企业的员工、团队或客户。这个量化、货币化和激励的过程可能是无止境的调整，但将提供一个透明的经济体系。
+这个框架有可能在组织中提供敏捷性，在这些组织中，数据提供者能够立即及早地获得研究数据，报告和其他信息，而这些信息将不会另外看到这样的数据，因为它通常需要自上而下 组织审批费用高昂，风险大。 可以跟踪使用这些数据并确定其价值，从而导致直接货币化和自下而上的融资机制。
 
-### Currency Modeling
+### 比特币地址
 
-The architecture allows a user to model currency and monetize late in their design. It is possible for a user to place information from many sources atop the blockchain, watch its use over time, and determine its value based upon business and customer priorities. At this point, assets and activities can be monetized and a mining or minting algorithm may be developed which will incentivize a business’ employees, teams, or customers. This process of quantify, monetize, and incentivize may be one of endless tuning, but would provide a transparent economic system.
-
-There is potential for this framework to provide agility in organizations where data providers are enabled to provide immediate and early access to research data, reports, and other information to projects that would not otherwise ever see such data, as it would typically require top-down organizational approval at great cost and risk. The use of such data could be tracked and its value determined, leading to direct monetization and a bottom-up funding mechanism.
-
-### Bitcoin Addressing
-
-The base implementation should likely default (at least for the foreseeable future) to utilize Bitcoin addressing and cryptography in order to leverage the ever growing external Bitcoin ecosystem. For example, use of Bitcoin cryptography in a private currency will enable the transparent use of hardware signing wallets for internal use (e.g. KeepKey, Trezor, Ledger). Another example is that of tokenization, whereby one may directly integrate Bitcoin tokenization provider technology for use with an internal blockchain (e.g. Counterparty or Tokenly).
+基础实施应该可能默认（至少在可预见的未来）利用比特币寻址和加密技术，以利用不断增长的外部比特币生态系统。 例如，以私人货币使用比特币加密技术将能够透明地使用硬件签名钱包进行内部使用（例如KeepKey，Trezor，Ledger）。 另一个例子是令牌化，其中可以直接将比特币令牌提供技术与内部块链一起使用（例如Counterparty或Tokenly）。
 
 ### Interoperability
 
